@@ -1,5 +1,5 @@
 {
-  "name": "xliff",
+  "name": "@articulate/xliff",
   "version": "4.1.0",
   "description": "xliff2js and js2xliff converter xliff utils",
   "main": "index.js",
@@ -24,11 +24,10 @@
     "js",
     "translation"
   ],
-  "author": "adrai",
+  "author": "articulate",
   "license": "MIT",
-  "homepage": "http://locize.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/locize/xliff.git"
+    "url": "https://github.com/articulate/xliff"
   }
 }
