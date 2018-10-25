@@ -18,16 +18,22 @@ function extractValue(valueElements, elementTypeInfo) {
 
   // nested inline element tag
   const elementType = tagToElementType(valueElement.name, elementTypeInfo);
-  if (valueElement.type === 'element' && elementType !== undefined) {
-    const inlineElementFactory = elementTypeInfo.factories[elementType];
-    return inlineElementFactory(
-      valueElement.name,
-      valueElement.attributes.id,
-      valueElement.attributes,
-      extractValue(valueElement.elements, elementTypeInfo)
-    );
-  }
 
+  if (valueElement.type === 'element') {
+    if (elementType !== undefined) {
+      const inlineElementFactory = elementTypeInfo.factories[elementType];
+      return inlineElementFactory(
+        valueElement.name,
+        valueElement.attributes.id,
+        valueElement.attributes,
+        extractValue(valueElement.elements, elementTypeInfo)
+      );
+    } else {
+      return valueElement.elements
+        ? extractValue(valueElement.elements, elementTypeInfo)
+        : '';
+    }
+  }
   // just ignore anything else
   return '';
 }

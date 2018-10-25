@@ -27,7 +27,12 @@ describe('extractValue() converts XML source/target values into xliff.js objects
     });
   });
 
-  it('returns an empty string for an unknown inline element type (or other object', () => {
+  it('creates objects unknown inline element types if it contains elements', () => {
+    const elements = [{ type: 'text', text: 'Hello' }];
+    expect(extractValue({ type: 'element', name: 'foo', attributes: { id: '1' }, elements }, ElementTypes12)).to.eql('Hello');
+  });
+
+  it('returns an empty string for an unknown inline element type without elements (or other object', () => {
     expect(extractValue({ type: 'element', name: 'foo', attributes: { id: '1' } }, ElementTypes12)).to.eql('');
   });
 
